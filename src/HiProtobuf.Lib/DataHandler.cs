@@ -19,12 +19,12 @@ namespace HiProtobuf.Lib
 {
     internal class DataHandler
     {
-        public const string NameSpace = "TableTool";
+        public const string NameSpace = Settings.c_namespace;
         private Assembly _assembly;
         private object _excelIns;
         public DataHandler()
         {
-            var folder = Settings.Export_Folder + Settings.dat_folder;
+            var folder = Settings.Data_Folder;
             if (Directory.Exists(folder))
             {
                 Directory.Delete(folder, true);
@@ -34,7 +34,7 @@ namespace HiProtobuf.Lib
 
         public void Process()
         {
-            var dllPath = Settings.Export_Folder + Settings.language_folder + Settings.csharp_dll_folder + Compiler.DllName;
+            var dllPath = Settings.DLL_Folder + Compiler.DllName;
             _assembly = Assembly.LoadFrom(dllPath);
             var protoFolder = Settings.Export_Folder + Settings.proto_folder;
             string[] files = Directory.GetFiles(protoFolder, "*.proto", SearchOption.AllDirectories);
@@ -42,7 +42,7 @@ namespace HiProtobuf.Lib
             {
                 string protoPath = files[i];
                 string name = Path.GetFileNameWithoutExtension(protoPath);
-                string excelInsName = $"{NameSpace}.Excel_" + name;
+                string excelInsName = $"{NameSpace}.{name}Table" ;
                 _excelIns = _assembly.CreateInstance(excelInsName);
                 string excelPath = Settings.Excel_Folder + "/" + name + ".xlsx";
                 ProcessData(excelPath);
@@ -344,7 +344,7 @@ namespace HiProtobuf.Lib
         void Serialize(object obj)
         {
             var type = obj.GetType();
-            var path = Settings.Export_Folder + Settings.dat_folder + "/" + type.Name + ".dat";
+            var path = Settings.Data_Folder + "/" + type.Name + ".dat";
             using (var output = File.Create(path))
             {
                 MessageExtensions.WriteTo((IMessage)obj, output);

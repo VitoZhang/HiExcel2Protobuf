@@ -15,6 +15,8 @@ namespace HiProtobuf.Lib
         /// 导出文件夹
         /// </summary>
         public static string Export_Folder = string.Empty;
+        public static string DLL_Folder = string.Empty;
+        public static string Data_Folder = string.Empty;
 
         /// <summary>
         /// Excel文件夹
@@ -49,15 +51,17 @@ namespace HiProtobuf.Lib
         /// <summary>
         /// 数据存放目录
         /// </summary>
-        internal static readonly string dat_folder = "/dat";
+        // internal static readonly string dat_folder = "/data";
 
         //导出语言文件夹
         internal static readonly string csharp_folder = "/csharp";
         internal static readonly string csharpForILRumtime_folder = "/csharpForILRumtime";
-        internal static readonly string csharp_dll_folder = "/csharp_dll";
+        // internal static readonly string csharp_dll_folder = "/csharp_dll";
         internal static readonly string cpp_folder = "/cpp";
         internal static readonly string go_folder = "/go";
         internal static readonly string java_folder = "/java";
         internal static readonly string python_folder = "/python";
+
+        internal const string c_namespace = "StaticData";
     }
 }

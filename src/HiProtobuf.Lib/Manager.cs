@@ -6,6 +6,7 @@
  ****************************************************************************/
 
 using HiFramework.Log;
+using System.IO;
 
 namespace HiProtobuf.Lib
 {
@@ -39,7 +40,7 @@ namespace HiProtobuf.Lib
             Log.Info("编译语言结束");
             Log.Info("开始生成数据");
             new DataHandler().Process();
-            Log.Info("生成数据结束");
+            Log.Info("生成数据结束");    
         }
     }
 }
