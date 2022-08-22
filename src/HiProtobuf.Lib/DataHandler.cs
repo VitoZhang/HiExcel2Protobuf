@@ -344,7 +344,7 @@ namespace HiProtobuf.Lib
         void Serialize(object obj)
         {
             var type = obj.GetType();
-            var path = Settings.Data_Folder + "/" + type.Name + ".dat";
+            var path = Settings.Data_Folder + "/" + type.Name + ".bytes";
             using (var output = File.Create(path))
             {
                 MessageExtensions.WriteTo((IMessage)obj, output);

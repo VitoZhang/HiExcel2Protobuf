@@ -63,8 +63,8 @@ option csharp_namespace = ""StaticData"";
             var str = "message " + _name + " {\n";
             for (int j = 1; j <= _colCount; j++)
             {
-                var type = _excelWorksheet.Cells[2, j].Value.ToString();
-                var name = _excelWorksheet.Cells[3, j].Value.ToString();
+                var type = _excelWorksheet.Cells[2, j].Value.ToString().Trim();
+                var name = _excelWorksheet.Cells[3, j].Value.ToString().Trim();
                 str += GetVariableString(type, name);
             }
             str += "}";
