@@ -64,6 +64,23 @@ namespace HiProtobuf.Lib
             "double[]", "float[]", "int32[]", "int64[]", "uint32[]", "uint64[]", "sint32[]", "sint64[]", "fixed32[]", "fixed64[]","sfixed32[]", "sfixed64[]", "bool[]", "string[]", "bytes[]"
         };
 
+        internal static string Cmd1(string file, string args)
+        {
+            var rValue = "";
+            using (System.Diagnostics.Process p = new System.Diagnostics.Process())
+            {
+                p.StartInfo.FileName = file;
+                p.StartInfo.Arguments = args;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
+                // p.StartInfo.WorkingDirectory = WorkingDirectory;
+                p.Start();
+                p.WaitForExit(10000);
+                rValue = p.StandardOutput.ReadToEnd();
+            }
+            return rValue;
+        }
+
         internal static string Cmd(string str)
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -89,6 +106,6 @@ namespace HiProtobuf.Lib
 
             process.WaitForExit();
             return output;
-        }
+        }        
     }
 }

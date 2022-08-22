@@ -56,7 +56,8 @@ namespace HiProtobuf.Lib
             {
                 var filePath = files[i];
                 var command = Settings.Protoc_Path + string.Format(" -I={0} --csharp_out={1} {2}", protoPath, outFolder, filePath);
-                var log = Common.Cmd(command);
+                // var log = Common.Cmd(command);
+                var log = Common.Cmd1(Settings.Protoc_Path, string.Format(" -I={0} --csharp_out={1} {2}", protoPath, outFolder, filePath));
             }
         }
 

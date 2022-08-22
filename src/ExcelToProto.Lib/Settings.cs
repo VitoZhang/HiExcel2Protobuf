@@ -22,6 +22,7 @@ namespace HiProtobuf.Lib
         /// Excel文件夹
         /// </summary>
         public static string Excel_Folder = string.Empty;
+        public static string ProtoC_Path = string.Empty;        
 
         /// <summary>
         /// 编译器路径
@@ -36,7 +37,7 @@ namespace HiProtobuf.Lib
         /// <summary>
         /// protoc路径
         /// </summary>
-        public static readonly string Protoc_Path = Environment.CurrentDirectory + @"\protoc-3.8.0-win64\bin\protoc.exe";
+        public static  string Protoc_Path => Environment.CurrentDirectory + ProtoC_Path;
 
         /// <summary>
         /// Proto文件存放目录

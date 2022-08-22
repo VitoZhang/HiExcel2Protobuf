@@ -30,6 +30,7 @@ namespace ExcelToProto.App
                 Settings.Data_Folder = Path.GetFullPath(pathCfg.Data_Folder);
                 Settings.Excel_Folder = Path.GetFullPath(pathCfg.Excel_Folder);
                 Settings.Compiler_Path = pathCfg.Compiler_Path;
+                Settings.ProtoC_Path = pathCfg.ProtoC_Path;
                 stream.Close();
 
                 Helper.LogInfo($"Export_Folder: " + Settings.Export_Folder);
@@ -76,5 +77,6 @@ namespace ExcelToProto.App
         public string Data_Folder;
         public string Excel_Folder;
         public string Compiler_Path;
+        public string ProtoC_Path;
     }
 }
