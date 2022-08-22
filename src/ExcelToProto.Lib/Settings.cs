@@ -35,7 +35,7 @@ namespace HiProtobuf.Lib
         /// <summary>
         /// protobuf dll
         /// </summary>
-        public static readonly string Protobuf_Dll_Path = Environment.CurrentDirectory + @"\Google.Protobuf.dll";
+        public static readonly string Protobuf_Dll_Path = Environment.CurrentDirectory + @"/Google.Protobuf.dll";
 
         /// <summary>
         /// protoc路径
