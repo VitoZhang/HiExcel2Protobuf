@@ -5,5 +5,7 @@
   <Data_Folder>../../Data</Data_Folder>
   <Excel_Folder>../../Excel</Excel_Folder>
 	<ProtoC_Path>/protoc-3.8.0-win64/bin/protoc.exe</ProtoC_Path>
-  <Compiler_Path>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe</Compiler_Path>
+  <Compiler_Path>"C:\Program Files\dotnet\dotnet.exe"</Compiler_Path>
+	<CSCPath>"C:\\Program Files\\dotnet\\sdk\\5.0.408\\Roslyn\\bincore\\csc.dll"</CSCPath>
+	<RefPath>C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\5.0.0\ref\net5.0\</RefPath>
 </PathConfig>

@@ -22,7 +22,10 @@ namespace HiProtobuf.Lib
         /// Excel文件夹
         /// </summary>
         public static string Excel_Folder = string.Empty;
-        public static string ProtoC_Path = string.Empty;        
+        public static string ProtoC_Path = string.Empty;
+
+        public static string CSCPath = string.Empty;
+        public static string RefPath = string.Empty;
 
         /// <summary>
         /// 编译器路径

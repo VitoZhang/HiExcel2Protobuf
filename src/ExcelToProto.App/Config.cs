@@ -31,6 +31,8 @@ namespace ExcelToProto.App
                 Settings.Excel_Folder = Path.GetFullPath(pathCfg.Excel_Folder);
                 Settings.Compiler_Path = pathCfg.Compiler_Path;
                 Settings.ProtoC_Path = pathCfg.ProtoC_Path;
+                Settings.CSCPath = pathCfg.CSCPath;
+                Settings.RefPath = pathCfg.RefPath;
                 stream.Close();
 
                 Helper.LogInfo($"Export_Folder: " + Settings.Export_Folder);
@@ -78,5 +80,8 @@ namespace ExcelToProto.App
         public string Excel_Folder;
         public string Compiler_Path;
         public string ProtoC_Path;
+        public string DotnetPath;
+        public string CSCPath;
+        public string RefPath;
     }
 }
