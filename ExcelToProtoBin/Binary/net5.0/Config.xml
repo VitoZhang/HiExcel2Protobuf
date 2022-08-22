@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<PathConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Export_Folder>../../Export</Export_Folder>
+  <DLL_Folder>../../DLL</DLL_Folder>
+  <Data_Folder>../../Data</Data_Folder>
+  <Excel_Folder>../../Excel</Excel_Folder>
+	<ProtoC_Path>/protoc-3.8.0-win64/bin/protoc.exe</ProtoC_Path>
+  <Compiler_Path>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe</Compiler_Path>
+</PathConfig>
