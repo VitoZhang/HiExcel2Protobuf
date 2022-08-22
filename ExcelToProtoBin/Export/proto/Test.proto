@@ -1,0 +1,23 @@
+
+// [START declaration]
+syntax = "proto3";
+package StaticData;
+// [END declaration]
+
+
+// [START csharp_declaration]
+option csharp_namespace = "StaticData"; 
+// [END csharp_declaration]
+
+message Test {
+  string id = 1;
+  string name = 2;
+  int32 hp = 3;
+  int32 attack = 4;
+  repeated string infos = 5;
+}
+
+message TestTable
+{
+    repeated Test Data = 1;
+}

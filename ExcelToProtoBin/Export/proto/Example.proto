@@ -1,0 +1,35 @@
+
+// [START declaration]
+syntax = "proto3";
+package StaticData;
+// [END declaration]
+
+
+// [START csharp_declaration]
+option csharp_namespace = "StaticData"; 
+// [END csharp_declaration]
+
+message Example {
+  string id = 1;
+  double name1 = 2;
+  float name2 = 3;
+  int32 name3 = 4;
+  int64 name4 = 5;
+  uint32 name5 = 6;
+  uint64 name6 = 7;
+  bool name7 = 8;
+  string name8 = 9;
+  repeated double name9 = 10;
+  repeated float name10 = 11;
+  repeated int32 name11 = 12;
+  repeated int64 name12 = 13;
+  repeated uint32 name13 = 14;
+  repeated uint64 name14 = 15;
+  repeated bool name15 = 16;
+  repeated string name16 = 17;
+}
+
+message ExampleTable
+{
+    repeated Example Data = 1;
+}
