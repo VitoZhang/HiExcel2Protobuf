@@ -22,6 +22,8 @@ namespace HiProtobuf.Lib
         private int _index;
         private ExcelWorksheet _excelWorksheet;
 
+        private string keyType;
+
         public ProtoGenerater(string name, int rowCount, int colCount, ExcelWorksheet excelWorksheet)
         {
             _name = name;
@@ -42,14 +44,11 @@ namespace HiProtobuf.Lib
         void ProcessHeader()
         {
             var header = @"
-// [START declaration]
 syntax = ""proto3"";
-package StaticData;
-// [END declaration]
 
 
 // [START csharp_declaration]
-option csharp_namespace = ""StaticData""; 
+option csharp_namespace = ""TableTool""; 
 // [END csharp_declaration]
 ";
             header = string.Format(header, _name + "_classname");
@@ -63,8 +62,13 @@ option csharp_namespace = ""StaticData"";
             var str = "message " + _name + " {\n";
             for (int j = 1; j <= _colCount; j++)
             {
-                var type = _excelWorksheet.Cells[2, j].Value.ToString().Trim();
-                var name = _excelWorksheet.Cells[3, j].Value.ToString().Trim();
+                var type = _excelWorksheet.Cells[2, j].Value.ToString();
+                var name = _excelWorksheet.Cells[3, j].Value.ToString();
+                if (name.StartsWith("KEY_"))
+                {
+                    name = name.Substring(4);
+                    keyType = type;
+                }
                 str += GetVariableString(type, name);
             }
             str += "}";
@@ -93,17 +97,34 @@ option csharp_namespace = ""StaticData"";
 
         private void ProcessMap()
         {
-            string str = @"
+            if (keyType == null)
+            {
+                string str = @"
 message {0}Table
 {{
     repeated {1} {2} = 1;
 }}";
-            str = string.Format(str, _name, _name, "Data");
-            var sw = File.AppendText(_path);
-            sw.WriteLine(str);
-            sw.Close();
+                str = string.Format(str, _name, _name, "Data");
+                var sw = File.AppendText(_path);
+                sw.WriteLine(str);
+                sw.Close();
 
-            Log.Info($"文件 {_path} 生成");
+                Log.Info($"文件 {_path} 生成");
+            }
+            else
+            {
+                string str = @"
+message {0}Table
+{{
+    map<{3},{1}> {2} = 1;
+}}";
+                str = string.Format(str, _name, _name, "Data", keyType);
+                var sw = File.AppendText(_path);
+                sw.WriteLine(str);
+                sw.Close();
+
+                Log.Info($"文件 {_path} 生成");
+            }
         }
     }
 }

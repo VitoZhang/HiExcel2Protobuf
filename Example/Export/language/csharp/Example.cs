@@ -24,21 +24,21 @@ namespace TableTool {
     static ExampleReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg1FeGFtcGxlLnByb3RvEgpIaVByb3RvYnVmIowCCgdFeGFtcGxlEgoKAmlk",
-            "GAEgASgJEg0KBW5hbWUxGAIgASgBEg0KBW5hbWUyGAMgASgCEg0KBW5hbWUz",
-            "GAQgASgFEg0KBW5hbWU0GAUgASgDEg0KBW5hbWU1GAYgASgNEg0KBW5hbWU2",
-            "GAcgASgEEg0KBW5hbWU3GAggASgIEg0KBW5hbWU4GAkgASgJEg0KBW5hbWU5",
-            "GAogAygBEg4KBm5hbWUxMBgLIAMoAhIOCgZuYW1lMTEYDCADKAUSDgoGbmFt",
-            "ZTEyGA0gAygDEg4KBm5hbWUxMxgOIAMoDRIOCgZuYW1lMTQYDyADKAQSDgoG",
-            "bmFtZTE1GBAgAygIEg4KBm5hbWUxNhgRIAMoCSIyCg1FeGNlbF9FeGFtcGxl",
-            "EiEKBERhdGEYASADKAsyEy5IaVByb3RvYnVmLkV4YW1wbGVCOgoZY29tLkhp",
-            "UHJvdG9idWYuSGlQcm90b2J1ZkIRRXhhbXBsZV9jbGFzc25hbWWqAglUYWJs",
+            "Cg1FeGFtcGxlLnByb3RvIowCCgdFeGFtcGxlEgoKAmlkGAEgASgJEg0KBW5h",
+            "bWUxGAIgASgBEg0KBW5hbWUyGAMgASgCEg0KBW5hbWUzGAQgASgFEg0KBW5h",
+            "bWU0GAUgASgDEg0KBW5hbWU1GAYgASgNEg0KBW5hbWU2GAcgASgEEg0KBW5h",
+            "bWU3GAggASgIEg0KBW5hbWU4GAkgASgJEg0KBW5hbWU5GAogAygBEg4KBm5h",
+            "bWUxMBgLIAMoAhIOCgZuYW1lMTEYDCADKAUSDgoGbmFtZTEyGA0gAygDEg4K",
+            "Bm5hbWUxMxgOIAMoDRIOCgZuYW1lMTQYDyADKAQSDgoGbmFtZTE1GBAgAygI",
+            "Eg4KBm5hbWUxNhgRIAMoCSJsCgxFeGFtcGxlVGFibGUSJQoERGF0YRgBIAMo",
+            "CzIXLkV4YW1wbGVUYWJsZS5EYXRhRW50cnkaNQoJRGF0YUVudHJ5EgsKA2tl",
+            "eRgBIAEoCRIXCgV2YWx1ZRgCIAEoCzIILkV4YW1wbGU6AjgBQgyqAglUYWJs",
             "ZVRvb2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::TableTool.Example), global::TableTool.Example.Parser, new[]{ "Id", "Name1", "Name2", "Name3", "Name4", "Name5", "Name6", "Name7", "Name8", "Name9", "Name10", "Name11", "Name12", "Name13", "Name14", "Name15", "Name16" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::TableTool.Excel_Example), global::TableTool.Excel_Example.Parser, new[]{ "Data" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::TableTool.ExampleTable), global::TableTool.ExampleTable.Parser, new[]{ "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -565,11 +565,11 @@ namespace TableTool {
 
   }
 
-  public sealed partial class Excel_Example : pb::IMessage<Excel_Example> {
-    private static readonly pb::MessageParser<Excel_Example> _parser = new pb::MessageParser<Excel_Example>(() => new Excel_Example());
+  public sealed partial class ExampleTable : pb::IMessage<ExampleTable> {
+    private static readonly pb::MessageParser<ExampleTable> _parser = new pb::MessageParser<ExampleTable>(() => new ExampleTable());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Excel_Example> Parser { get { return _parser; } }
+    public static pb::MessageParser<ExampleTable> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -582,54 +582,54 @@ namespace TableTool {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Excel_Example() {
+    public ExampleTable() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Excel_Example(Excel_Example other) : this() {
+    public ExampleTable(ExampleTable other) : this() {
       data_ = other.data_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Excel_Example Clone() {
-      return new Excel_Example(this);
+    public ExampleTable Clone() {
+      return new ExampleTable(this);
     }
 
     /// <summary>Field number for the "Data" field.</summary>
     public const int DataFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::TableTool.Example> _repeated_data_codec
-        = pb::FieldCodec.ForMessage(10, global::TableTool.Example.Parser);
-    private readonly pbc::RepeatedField<global::TableTool.Example> data_ = new pbc::RepeatedField<global::TableTool.Example>();
+    private static readonly pbc::MapField<string, global::TableTool.Example>.Codec _map_data_codec
+        = new pbc::MapField<string, global::TableTool.Example>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::TableTool.Example.Parser), 10);
+    private readonly pbc::MapField<string, global::TableTool.Example> data_ = new pbc::MapField<string, global::TableTool.Example>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::TableTool.Example> Data {
+    public pbc::MapField<string, global::TableTool.Example> Data {
       get { return data_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Excel_Example);
+      return Equals(other as ExampleTable);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Excel_Example other) {
+    public bool Equals(ExampleTable other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!data_.Equals(other.data_)) return false;
+      if (!Data.Equals(other.Data)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= data_.GetHashCode();
+      hash ^= Data.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -643,7 +643,7 @@ namespace TableTool {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      data_.WriteTo(output, _repeated_data_codec);
+      data_.WriteTo(output, _map_data_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -652,7 +652,7 @@ namespace TableTool {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += data_.CalculateSize(_repeated_data_codec);
+      size += data_.CalculateSize(_map_data_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -660,7 +660,7 @@ namespace TableTool {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Excel_Example other) {
+    public void MergeFrom(ExampleTable other) {
       if (other == null) {
         return;
       }
@@ -677,7 +677,7 @@ namespace TableTool {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            data_.AddEntriesFrom(input, _repeated_data_codec);
+            data_.AddEntriesFrom(input, _map_data_codec);
             break;
           }
         }

@@ -4,6 +4,7 @@
  * Document: https://github.com/hiramtan/HiProtobuf
  * Author: hiramtan@live.com
  ****************************************************************************/
+using HiFramework.Log;
 using System;
 using System.IO;
 
@@ -22,12 +23,12 @@ namespace HiProtobuf.Lib
             Directory.CreateDirectory(_languageFolder);
 
             var protoFolder = Settings.Export_Folder + Settings.proto_folder;
-            // Process_csharpForILRumtime(protoFolder);
+            //Process_csharpForILRumtime(protoFolder);
             Process_csharp(protoFolder);
-            // Process_cpp(protoFolder);
-            // Process_go(protoFolder);
-            // Process_java(protoFolder);
-            // Process_python(protoFolder);
+            Process_cpp(protoFolder);
+            //Process_go(protoFolder);
+            //Process_java(protoFolder);
+            //Process_python(protoFolder);
         }
 
         private void Process_csharpForILRumtime(string protoPath)
@@ -69,6 +70,7 @@ namespace HiProtobuf.Lib
             for (int i = 0; i < files.Length; i++)
             {
                 var filePath = files[i];
+                Log.Info("protoc cmd {0}", Settings.Protoc_Path);
                 var command = Settings.Protoc_Path + string.Format(" -I={0} --cpp_out={1} {2}", protoPath, outFolder, filePath);
                 var log = Common.Cmd(command);
             }

@@ -25,8 +25,6 @@ namespace HiProtobuf.UI
                 Stream stream = new FileStream(_path, FileMode.Open, FileAccess.Read, FileShare.Read);
                 PathConfig pathCfg = xs.Deserialize(stream) as PathConfig;
                 Settings.Export_Folder = Path.GetFullPath(pathCfg.Export_Folder);
-                Settings.DLL_Folder = Path.GetFullPath(pathCfg.DLL_Folder);
-                Settings.Data_Folder = Path.GetFullPath(pathCfg.Data_Folder);
                 Settings.Excel_Folder = Path.GetFullPath(pathCfg.Excel_Folder);
                 Settings.Compiler_Path = pathCfg.Compiler_Path;
                 stream.Close();
@@ -47,14 +45,6 @@ namespace HiProtobuf.UI
             result = url2.MakeRelativeUri(url1).ToString();
             pathCfg.Excel_Folder = result;
 
-            url1 = new Uri(Settings.DLL_Folder);
-            result = url2.MakeRelativeUri(url1).ToString();
-            pathCfg.DLL_Folder = result;          
-
-            url1 = new Uri(Settings.Data_Folder);
-            result = url2.MakeRelativeUri(url1).ToString();
-            pathCfg.Data_Folder = result;                
-
             pathCfg.Compiler_Path = Settings.Compiler_Path;
             XmlSerializer xs = XmlSerializer.FromTypes(new Type[] { typeof(PathConfig) })[0];
             Stream stream = new FileStream(_path, FileMode.Create, FileAccess.Write, FileShare.Read);
@@ -65,8 +55,6 @@ namespace HiProtobuf.UI
     public class PathConfig
     {
         public string Export_Folder;
-        public string DLL_Folder;
-        public string Data_Folder;
         public string Excel_Folder;
         public string Compiler_Path;
     }

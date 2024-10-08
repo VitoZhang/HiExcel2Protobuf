@@ -19,12 +19,12 @@ namespace HiProtobuf.Lib
 {
     internal class DataHandler
     {
-        public const string NameSpace = Settings.c_namespace;
+        public const string NameSpace = "TableTool";
         private Assembly _assembly;
         private object _excelIns;
         public DataHandler()
         {
-            var folder = Settings.Data_Folder;
+            var folder = Settings.Export_Folder + Settings.dat_folder;
             if (Directory.Exists(folder))
             {
                 Directory.Delete(folder, true);
@@ -34,7 +34,7 @@ namespace HiProtobuf.Lib
 
         public void Process()
         {
-            var dllPath = Settings.DLL_Folder + Compiler.DllName;
+            var dllPath = Settings.Export_Folder + Settings.language_folder + Settings.csharp_dll_folder + Compiler.DllName;
             _assembly = Assembly.LoadFrom(dllPath);
             var protoFolder = Settings.Export_Folder + Settings.proto_folder;
             string[] files = Directory.GetFiles(protoFolder, "*.proto", SearchOption.AllDirectories);
@@ -42,11 +42,23 @@ namespace HiProtobuf.Lib
             {
                 string protoPath = files[i];
                 string name = Path.GetFileNameWithoutExtension(protoPath);
-                string excelInsName = $"{NameSpace}.{name}Table" ;
+                string excelInsName = $"{NameSpace}." + name + "Table";
                 _excelIns = _assembly.CreateInstance(excelInsName);
                 string excelPath = Settings.Excel_Folder + "/" + name + ".xlsx";
                 ProcessData(excelPath);
             }
+        }
+
+        System.Type GetTypeByName(string typeName)
+        {
+            if (typeName == "string")
+               return typeof(string);
+            else if (typeName == "int64") 
+                return typeof(long);
+            else if (typeName == "int32")
+                return typeof(int);
+
+            return null;
         }
 
         private void ProcessData(string path)
@@ -63,17 +75,41 @@ namespace HiProtobuf.Lib
                 var dataProp = excel_Type.GetProperty("Data");
                 var dataIns = dataProp.GetValue(_excelIns);
                 var dataType = dataProp.PropertyType;
+
+                var isMap = false;
+                if (dataType.Name.Contains("MapField"))
+                    isMap = true;
+
                 for (int i = 4; i <= rowCount; i++)
                 {
                     var ins = _assembly.CreateInstance($"{NameSpace}.{name}");
-                    var addMethod = dataType.GetMethod("Add", new Type[] { ins.GetType() });
+                    if (isMap)
+                    {
+                        //var addMethod = dataType.GetMethod("Add", new Type[] { typeof(object), ins.GetType() });
+
+                        var variableType = worksheet.Cells[2, 1].Value?.ToString();
+                        var variableValue = worksheet.Cells[i, 1].Value?.ToString();
+                        var value = GetVariableValue(variableType, variableValue);
+
+                        var t = GetTypeByName(variableType);
+                        var addMethod = dataType.GetMethod("Add", new Type[] { t, ins.GetType() });
+                        addMethod.Invoke(dataIns, new[] { value,  ins });
+                    }
+                    else
+                    {
+                        var addMethod = dataType.GetMethod("Add", new Type[] { ins.GetType() });
+                        addMethod.Invoke(dataIns, new[] { ins });
+                    }
                     //TODO 最初配置表数据用map存储，现在改为使用list存储 不需要强制第一个字段为int 作为key值
-                    //int id = (int)((Range)usedRange.Cells[i, 1]).Value2; 
-                    addMethod.Invoke(dataIns, new[] { ins });
+                    //int id = (int)((Range)usedRange.Cells[i, 1]).Value2;
                     for (int j = 1; j <= columnCount; j++)
                     {
                         var variableType = worksheet.Cells[2, j].Value?.ToString();
                         var variableName = worksheet.Cells[3, j].Value?.ToString();
+                        if (variableName.StartsWith("KEY_"))
+                        {
+                            variableName = variableName.Substring(4);
+                        }
                         var variableValue = worksheet.Cells[i, j].Value?.ToString();
                         var insType = ins.GetType();
                         var fieldName = FirstCharToLower(variableName + "_");//首字母小写，防止获取不到正确的属性
@@ -344,7 +380,7 @@ namespace HiProtobuf.Lib
         void Serialize(object obj)
         {
             var type = obj.GetType();
-            var path = Settings.Data_Folder + "/" + type.Name + ".bytes";
+            var path = Settings.Export_Folder + Settings.dat_folder + "/" + type.Name + ".dat";
             using (var output = File.Create(path))
             {
                 MessageExtensions.WriteTo((IMessage)obj, output);

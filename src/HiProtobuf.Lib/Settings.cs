@@ -15,8 +15,6 @@ namespace HiProtobuf.Lib
         /// 导出文件夹
         /// </summary>
         public static string Export_Folder = string.Empty;
-        public static string DLL_Folder = string.Empty;
-        public static string Data_Folder = string.Empty;
 
         /// <summary>
         /// Excel文件夹
@@ -36,7 +34,7 @@ namespace HiProtobuf.Lib
         /// <summary>
         /// protoc路径
         /// </summary>
-        public static readonly string Protoc_Path = Environment.CurrentDirectory + @"\protoc-3.8.0-win64\bin\protoc.exe";
+        public static readonly string Protoc_Path = Environment.CurrentDirectory + @"\protoc-3.15.4\bin\protoc.exe";
 
         /// <summary>
         /// Proto文件存放目录
@@ -51,17 +49,15 @@ namespace HiProtobuf.Lib
         /// <summary>
         /// 数据存放目录
         /// </summary>
-        // internal static readonly string dat_folder = "/data";
+        internal static readonly string dat_folder = "/dat";
 
         //导出语言文件夹
         internal static readonly string csharp_folder = "/csharp";
         internal static readonly string csharpForILRumtime_folder = "/csharpForILRumtime";
-        // internal static readonly string csharp_dll_folder = "/csharp_dll";
+        internal static readonly string csharp_dll_folder = "/csharp_dll";
         internal static readonly string cpp_folder = "/cpp";
         internal static readonly string go_folder = "/go";
         internal static readonly string java_folder = "/java";
         internal static readonly string python_folder = "/python";
-
-        internal const string c_namespace = "StaticData";
     }
 }
