@@ -193,11 +193,11 @@ class Test : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::int64 id() const;
   void set_id(::google::protobuf::int64 value);
 
-  // int32 hp = 3;
-  void clear_hp();
-  static const int kHpFieldNumber = 3;
-  ::google::protobuf::int32 hp() const;
-  void set_hp(::google::protobuf::int32 value);
+  // int32 hp_num = 3;
+  void clear_hp_num();
+  static const int kHpNumFieldNumber = 3;
+  ::google::protobuf::int32 hp_num() const;
+  void set_hp_num(::google::protobuf::int32 value);
 
   // int32 attack = 4;
   void clear_attack();
@@ -212,7 +212,7 @@ class Test : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::RepeatedPtrField< ::std::string> infos_;
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::int64 id_;
-  ::google::protobuf::int32 hp_;
+  ::google::protobuf::int32 hp_num_;
   ::google::protobuf::int32 attack_;
   mutable int _cached_size_;
   friend struct ::protobuf_Test_2eproto::TableStruct;
@@ -425,18 +425,18 @@ inline void Test::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:Test.name)
 }
 
-// int32 hp = 3;
-inline void Test::clear_hp() {
-  hp_ = 0;
+// int32 hp_num = 3;
+inline void Test::clear_hp_num() {
+  hp_num_ = 0;
 }
-inline ::google::protobuf::int32 Test::hp() const {
-  // @@protoc_insertion_point(field_get:Test.hp)
-  return hp_;
+inline ::google::protobuf::int32 Test::hp_num() const {
+  // @@protoc_insertion_point(field_get:Test.hp_num)
+  return hp_num_;
 }
-inline void Test::set_hp(::google::protobuf::int32 value) {
+inline void Test::set_hp_num(::google::protobuf::int32 value) {
   
-  hp_ = value;
-  // @@protoc_insertion_point(field_set:Test.hp)
+  hp_num_ = value;
+  // @@protoc_insertion_point(field_set:Test.hp_num)
 }
 
 // int32 attack = 4;

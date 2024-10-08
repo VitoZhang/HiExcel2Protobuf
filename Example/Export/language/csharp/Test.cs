@@ -24,15 +24,15 @@ namespace TableTool {
     static TestReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgpUZXN0LnByb3RvIksKBFRlc3QSCgoCaWQYASABKAMSDAoEbmFtZRgCIAEo",
-            "CRIKCgJocBgDIAEoBRIOCgZhdHRhY2sYBCABKAUSDQoFaW5mb3MYBSADKAki",
-            "YwoJVGVzdFRhYmxlEiIKBERhdGEYASADKAsyFC5UZXN0VGFibGUuRGF0YUVu",
-            "dHJ5GjIKCURhdGFFbnRyeRILCgNrZXkYASABKAMSFAoFdmFsdWUYAiABKAsy",
-            "BS5UZXN0OgI4AUIMqgIJVGFibGVUb29sYgZwcm90bzM="));
+            "CgpUZXN0LnByb3RvIk8KBFRlc3QSCgoCaWQYASABKAMSDAoEbmFtZRgCIAEo",
+            "CRIOCgZocF9udW0YAyABKAUSDgoGYXR0YWNrGAQgASgFEg0KBWluZm9zGAUg",
+            "AygJImMKCVRlc3RUYWJsZRIiCgREYXRhGAEgAygLMhQuVGVzdFRhYmxlLkRh",
+            "dGFFbnRyeRoyCglEYXRhRW50cnkSCwoDa2V5GAEgASgDEhQKBXZhbHVlGAIg",
+            "ASgLMgUuVGVzdDoCOAFCDKoCCVRhYmxlVG9vbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::TableTool.Test), global::TableTool.Test.Parser, new[]{ "Id", "Name", "Hp", "Attack", "Infos" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::TableTool.Test), global::TableTool.Test.Parser, new[]{ "Id", "Name", "HpNum", "Attack", "Infos" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::TableTool.TestTable), global::TableTool.TestTable.Parser, new[]{ "Data" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
@@ -67,7 +67,7 @@ namespace TableTool {
     public Test(Test other) : this() {
       id_ = other.id_;
       name_ = other.name_;
-      hp_ = other.hp_;
+      hpNum_ = other.hpNum_;
       attack_ = other.attack_;
       infos_ = other.infos_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -100,14 +100,14 @@ namespace TableTool {
       }
     }
 
-    /// <summary>Field number for the "hp" field.</summary>
-    public const int HpFieldNumber = 3;
-    private int hp_;
+    /// <summary>Field number for the "hp_num" field.</summary>
+    public const int HpNumFieldNumber = 3;
+    private int hpNum_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Hp {
-      get { return hp_; }
+    public int HpNum {
+      get { return hpNum_; }
       set {
-        hp_ = value;
+        hpNum_ = value;
       }
     }
 
@@ -147,7 +147,7 @@ namespace TableTool {
       }
       if (Id != other.Id) return false;
       if (Name != other.Name) return false;
-      if (Hp != other.Hp) return false;
+      if (HpNum != other.HpNum) return false;
       if (Attack != other.Attack) return false;
       if(!infos_.Equals(other.infos_)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -158,7 +158,7 @@ namespace TableTool {
       int hash = 1;
       if (Id != 0L) hash ^= Id.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (Hp != 0) hash ^= Hp.GetHashCode();
+      if (HpNum != 0) hash ^= HpNum.GetHashCode();
       if (Attack != 0) hash ^= Attack.GetHashCode();
       hash ^= infos_.GetHashCode();
       if (_unknownFields != null) {
@@ -182,9 +182,9 @@ namespace TableTool {
         output.WriteRawTag(18);
         output.WriteString(Name);
       }
-      if (Hp != 0) {
+      if (HpNum != 0) {
         output.WriteRawTag(24);
-        output.WriteInt32(Hp);
+        output.WriteInt32(HpNum);
       }
       if (Attack != 0) {
         output.WriteRawTag(32);
@@ -205,8 +205,8 @@ namespace TableTool {
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (Hp != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Hp);
+      if (HpNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(HpNum);
       }
       if (Attack != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Attack);
@@ -229,8 +229,8 @@ namespace TableTool {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.Hp != 0) {
-        Hp = other.Hp;
+      if (other.HpNum != 0) {
+        HpNum = other.HpNum;
       }
       if (other.Attack != 0) {
         Attack = other.Attack;
@@ -256,7 +256,7 @@ namespace TableTool {
             break;
           }
           case 24: {
-            Hp = input.ReadInt32();
+            HpNum = input.ReadInt32();
             break;
           }
           case 32: {

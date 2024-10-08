@@ -109,7 +109,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Test, id_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Test, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Test, hp_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Test, hp_num_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Test, attack_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Test, infos_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::TestTable_DataEntry_DoNotUse, _has_bits_),
@@ -162,15 +162,15 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\nTest.proto\"K\n\004Test\022\n\n\002id\030\001 \001(\003\022\014\n\004name"
-      "\030\002 \001(\t\022\n\n\002hp\030\003 \001(\005\022\016\n\006attack\030\004 \001(\005\022\r\n\005in"
-      "fos\030\005 \003(\t\"c\n\tTestTable\022\"\n\004Data\030\001 \003(\0132\024.T"
-      "estTable.DataEntry\0322\n\tDataEntry\022\013\n\003key\030\001"
-      " \001(\003\022\024\n\005value\030\002 \001(\0132\005.Test:\0028\001B\014\252\002\tTable"
-      "Toolb\006proto3"
+      "\n\nTest.proto\"O\n\004Test\022\n\n\002id\030\001 \001(\003\022\014\n\004name"
+      "\030\002 \001(\t\022\016\n\006hp_num\030\003 \001(\005\022\016\n\006attack\030\004 \001(\005\022\r"
+      "\n\005infos\030\005 \003(\t\"c\n\tTestTable\022\"\n\004Data\030\001 \003(\013"
+      "2\024.TestTable.DataEntry\0322\n\tDataEntry\022\013\n\003k"
+      "ey\030\001 \001(\003\022\024\n\005value\030\002 \001(\0132\005.Test:\0028\001B\014\252\002\tT"
+      "ableToolb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 212);
+      descriptor, 216);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Test.proto", &protobuf_RegisterTypes);
 }
@@ -194,7 +194,7 @@ void Test::InitAsDefaultInstance() {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Test::kIdFieldNumber;
 const int Test::kNameFieldNumber;
-const int Test::kHpFieldNumber;
+const int Test::kHpNumFieldNumber;
 const int Test::kAttackFieldNumber;
 const int Test::kInfosFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -317,14 +317,14 @@ bool Test::MergePartialFromCodedStream(
         break;
       }
 
-      // int32 hp = 3;
+      // int32 hp_num = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &hp_)));
+                 input, &hp_num_)));
         } else {
           goto handle_unusual;
         }
@@ -403,9 +403,9 @@ void Test::SerializeWithCachedSizes(
       2, this->name(), output);
   }
 
-  // int32 hp = 3;
-  if (this->hp() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->hp(), output);
+  // int32 hp_num = 3;
+  if (this->hp_num() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->hp_num(), output);
   }
 
   // int32 attack = 4;
@@ -453,9 +453,9 @@ void Test::SerializeWithCachedSizes(
         2, this->name(), target);
   }
 
-  // int32 hp = 3;
-  if (this->hp() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->hp(), target);
+  // int32 hp_num = 3;
+  if (this->hp_num() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->hp_num(), target);
   }
 
   // int32 attack = 4;
@@ -512,11 +512,11 @@ size_t Test::ByteSizeLong() const {
         this->id());
   }
 
-  // int32 hp = 3;
-  if (this->hp() != 0) {
+  // int32 hp_num = 3;
+  if (this->hp_num() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->hp());
+        this->hp_num());
   }
 
   // int32 attack = 4;
@@ -563,8 +563,8 @@ void Test::MergeFrom(const Test& from) {
   if (from.id() != 0) {
     set_id(from.id());
   }
-  if (from.hp() != 0) {
-    set_hp(from.hp());
+  if (from.hp_num() != 0) {
+    set_hp_num(from.hp_num());
   }
   if (from.attack() != 0) {
     set_attack(from.attack());
@@ -598,7 +598,7 @@ void Test::InternalSwap(Test* other) {
   infos_.InternalSwap(&other->infos_);
   name_.Swap(&other->name_);
   swap(id_, other->id_);
-  swap(hp_, other->hp_);
+  swap(hp_num_, other->hp_num_);
   swap(attack_, other->attack_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);

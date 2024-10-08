@@ -9,7 +9,7 @@ option csharp_namespace = "TableTool";
 message Test {
   int64 id = 1;
   string name = 2;
-  int32 hp = 3;
+  int32 hp_num = 3;
   int32 attack = 4;
   repeated string infos = 5;
 }

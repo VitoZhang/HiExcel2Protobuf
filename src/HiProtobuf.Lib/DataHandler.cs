@@ -119,18 +119,23 @@ namespace HiProtobuf.Lib
                         {
                             //TODO 临时给XX_XX命名规则的数据表做兼容处理，后续要规避这种命名
                             var index = fieldName.IndexOf("_");
-                            var charArray = fieldName.ToCharArray();
-                            var tempCharUper = charArray[index + 1].ToString().ToUpper();
-                            charArray[index + 1] = tempCharUper.ToCharArray()[0];
-                            fieldName = new string(charArray);
-                            fieldName = fieldName.Remove(index, 1);
+                            while (index >= 0 && index < (fieldName.Length - 1))
+                            {
+                                var charArray = fieldName.ToCharArray();
+                                var tempCharUper = charArray[index + 1].ToString().ToUpper();
+                                charArray[index + 1] = tempCharUper.ToCharArray()[0];
+                                fieldName = new string(charArray);
+                                fieldName = fieldName.Remove(index, 1);
+
+                                index = fieldName.IndexOf("_");
+                            }
                             insField = insType.GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
                             value = GetVariableValue(variableType, variableValue);
                             if (insField == null)
                             {
                                 Log.Info($"文件： {name} 属性： {variableName} 没有反射获取到对应的数据");
                             }
-                            Log.Info($"文件： {name} 属性： {variableName} 命名规则不正常，注意修复");
+                            Log.Info($"文件： {name} 属性： {variableName} 命名规则不正常，注意修复, 修正为： {fieldName}");
                         }
                         insField?.SetValue(ins, value);
                     }
